@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Insert the name of your site   -->
+    <title>Butter Books</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="static/images/misc/bread.png">
+</head>
+
+<body>
+    <div class="dropdown">
+        <p class="dropdownSelect">Select Category</p>
+        <div class="dropdownContent">
+            <!-- This for loop assumes that you are passing a list of category rows, retrieved from the database -->
+            {% for category in categories %}
+              <p><a href="category?category={{ category[0] }}">{{ category[1] }}</a></p>
+            {%endfor%}
+        </div>
+      </div>
+
+    <header>
+        <a href="{{ url_for('home')}}">
+          <img src="static/images/misc/bread.png" alt="Butter Books logo">
+        </a>
+        <h1 id="title"><a href="/">Butter Books</a></h1>
+    </header>
+
+    <div id="upperHeader">
+      <form id='searchBoxForm' action="#" method="post">
+        <input id='searchBox' type='text' placeholder='Search by title' name="search">
+        <i class="fa fa-search"></i>
+      </form>
+
+      <div id='cart'>
+        <a href="#"><p>cart (1)</p></a>
+      </div>
+
+      <div class='loginButton'><a href='#'>login</a></div>
+    </div>
+
+    <hr>
+    <main>{% block container %} {% endblock %}</main>
+
+    <footer>
+        <div id="footerLeft">
+            <p>Butter Books &copy;</p>
+        </div>
+        <div id="footerRight">
+            <a href="#">Contact Us</a>
+            <a href="#">Directions</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+</body>
+
+</html>

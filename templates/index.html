@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<main>
+    <div id="indexMain">
+         <div id="intro">
+             <p>Butter Books is a family owned cafe and bookstore located in the heart of Manhattan, NY. Our bookshelves are unsegregated; featuring a majority of classic and contemporary books showcasing immigrant authors.<br><br>Enjoy their stories with a side of coffee and bread.</p>
+         </div>
+
+        <div id="mainContent">
+            <h1>shop by category</h1>
+            <div id='categorySelections'>
+                <!-- This for loop assumes that you are passing a list of category rows, retrieved from the database -->
+                {% for category in categories %}
+                    <div class='category'>
+                        <a href="category?category={{ category[0] }}"><img src="static/images/categories/{{ category[1] }}.png" alt=""></a>
+                        <p><a href="category?category={{ category[0] }}">{{ category[1] }}</a></p>
+                    </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
